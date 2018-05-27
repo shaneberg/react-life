@@ -1,4 +1,5 @@
 import Cell from './models/Cell';
+import CellManager from './models/CellManager';
 
 // The key representations the neighbor configuration
 const expectedResultsForLivingCell = [
@@ -290,7 +291,9 @@ const expectedResultsForLivingCell = [
 ];
 
 it('calls determineNextState', () => {
-  const cell = new Cell();
+  // Should this be a mock/stub, etc? 
+  const manager = new CellManager();
+  const cell = new Cell(manager, 0, 0);
 
   // TOOD: Mock out CellManager.getNeighborStates
 
