@@ -1,5 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import Cell from './models/Cell';
 
 // The key representations the neighbor configuration
@@ -291,13 +289,11 @@ const expectedResultsForLivingCell = [
   false, // 1111 1111   255
 ];
 
-
-it('calls Cell', () => {
+it('calls determineNextState', () => {
   const cell = new Cell();
-  cell.foo();
-});
 
-it('dies Cell', () => {
-  const cell = new Cell();
-  cell.foo();
+  // TOOD: Mock out CellManager.getNeighborStates
+
+  const result = cell.determineNextState();
+  // TODO: Examine results and compare to expected results
 });

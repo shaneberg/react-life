@@ -1,7 +1,8 @@
 // A look-less model of a Conway's Life cell
 
 class Cell {
-  foo() {
+
+  determineNextState() {
     return true;
   }
 }
