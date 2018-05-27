@@ -290,13 +290,13 @@ const expectedResultsForLivingCell = [
   false, // 1111 1111   255
 ];
 
-it('calls determineNextState', () => {
+it('calls getNextState', () => {
   // Should this be a mock/stub, etc? 
   const manager = new CellManager();
   const cell = new Cell(manager, 0, 0);
+  // TODO: Mock out CellManager.getNeighborStates
 
-  // TOOD: Mock out CellManager.getNeighborStates
-
-  const result = cell.determineNextState();
+  // const result = cell.getNextState();
   // TODO: Examine results and compare to expected results
+  expect(cell.getNextState()).toEqual(true);
 });
