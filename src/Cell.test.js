@@ -290,6 +290,15 @@ const expectedResultsForLivingCell = [
   false, // 1111 1111   255
 ];
 
+// What would this test be like:
+// 1. Create a cell - including its current state
+// 2. Mock its neighbors -- do this for all 256 combinations
+// 3. Prepare next state
+// 4. Transition to next state
+// 5. Verify next state
+// 6. Reset for next test call
+
+
 it('calls getNextState', () => {
   // Should this be a mock/stub, etc? 
   const manager = new CellManager();
