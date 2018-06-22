@@ -7,6 +7,14 @@
     "react-dom": "^16.4.0"
   },
   "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.9.1",
+    "eslint-plugin-standard": "^3.1.0",
     "react-scripts": "1.1.4"
   },
   "scripts": {
@@ -14,6 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom"
+    "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom",
+    "lint": "node node_modules/eslint/bin/eslint.js src/"
   }
 }
