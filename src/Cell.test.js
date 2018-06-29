@@ -592,10 +592,24 @@ const expectedResultsForDeadCell = [
 it('calls getNextState', () => {
   // Should this be a mock/stub, etc? 
   const manager = new CellManager();
+
+  const getNeighborStatesMock = jest.fn();
+
+  for (let i = 0; i < 256; i++) {
+    let returnValArr = [];
+    for (let j = 0; j < 8; j++) {
+      var curVal = false
+      returnValArr.push(curVal);
+    }
+
+    getNeighborStatesMock.mockReturnValueOnce(returnValArr);
+  }
+
+  manager.getNeighborStates = getNeighborStatesMock;
   const cell = new Cell(manager, 0, 0);
   // TODO: Mock out CellManager.getNeighborStates
 
   // const result = cell.getNextState();
   // TODO: Examine results and compare to expected results
-  expect(cell.getNextState()).toEqual(true);
+  expect(cell.getNextState()).toEqual(false);
 });
