@@ -13,6 +13,18 @@ class CellManager {
    *  +-----------+
    */
 
+  constructor(width, height) {
+    let cells = [];
+    cells.length = width;
+    for (let i = 0; i < cells.length; i++) {
+      cells[i] = [];
+      cells[i].length = height;
+    }
+    this.cells = cells;
+  }
+
+
+
   getNeighborStates(x, y) {
 
     // TODO: Return an array of the neighboring states

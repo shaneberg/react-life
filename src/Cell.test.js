@@ -591,7 +591,7 @@ const expectedResultsForDeadCell = [
 
 it('calls getNextState', () => {
   // Should this be a mock/stub, etc? 
-  const manager = new CellManager();
+  const manager = new CellManager(100, 100);
 
   const getNeighborStatesMock = jest.fn();
 
