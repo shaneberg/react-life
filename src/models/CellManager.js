@@ -15,18 +15,22 @@ class CellManager {
 
   constructor(width, height) {
     let cells = [];
-    cells.length = width;
-    for (let i = 0; i < cells.length; i++) {
-      cells[i] = [];
-      cells[i].length = height;
+    for (let i = 0; i < width; i++) {
+      let curCol = [];
+      for (let j = 0; j < height; j++) {
+
+        // Is this new one alive?
+        let rand = Math.random();
+        const odds = 0.3;
+        curCol[j] = (rand <= odds);
+      }
+      cells[i] = curCol;
     }
+
     this.cells = cells;
   }
 
-
-
   getNeighborStates(x, y) {
-
     // TODO: Return an array of the neighboring states
     return [];
   }
