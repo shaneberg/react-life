@@ -20,20 +20,12 @@ class Cell {
 
     for (let i = 0; i < array.length; i++) {
       const curVal = array[i];
-      if (curVal == target) {
+      if (curVal === target) {
         count++;
       }
     }
 
     return count;
-  }
-
-  prepareNextState() {
-    this.nextAlive = getNextState();
-  }
-
-  setNextState() {
-    setState(this.nextState);
   }
 
   // What is this particular cell's fate in the subsequent next turn?

@@ -11,11 +11,11 @@ const expectedResultsForLivingCell = [
   false, // 0000 0100   004
   true, // 0000 0101   005
   true, // 0000 0110   006
-  false, // 0000 0111   007
+  true, // 0000 0111   007
   false, // 0000 1000   008
   true, // 0000 1001   009
   true, // 0000 1010   010
-  false, // 0000 1011   011
+  true, // 0000 1011   011
   true, // 0000 1100   012
   true, // 0000 1101   013
   true, // 0000 1110   014
@@ -598,7 +598,19 @@ it('calls getNextState', () => {
   for (let i = 0; i < 256; i++) {
     let returnValArr = [];
     for (let j = 0; j < 8; j++) {
-      var curVal = false
+      // Move the bit we're inspecting to the lowest order and compare that bit to 1.
+      let curVal = !!((i >> j) & 0x1);
+      returnValArr.push(curVal);
+    }
+
+    getNeighborStatesMock.mockReturnValueOnce(returnValArr);
+  }
+
+  for (let i = 0; i < 256; i++) {
+    let returnValArr = [];
+    for (let j = 0; j < 8; j++) {
+      // Move the bit we're inspecting to the lowest order and compare that bit to 1.
+      let curVal = !!((i >> j) & 0x1);
       returnValArr.push(curVal);
     }
 
@@ -606,10 +618,21 @@ it('calls getNextState', () => {
   }
 
   manager.getNeighborStates = getNeighborStatesMock;
-  const cell = new Cell(manager, 0, 0);
-  // TODO: Mock out CellManager.getNeighborStates
 
-  // const result = cell.getNextState();
-  // TODO: Examine results and compare to expected results
-  expect(cell.getNextState()).toEqual(false);
+  for (let i = 0; i < 256; i++) {
+    const cell = new Cell(manager, 10, 10);
+    cell.setState(true);
+    const expectedResult = expectedResultsForLivingCell[i];
+    const nextState = cell.getNextState();
+    expect(nextState).toEqual(expectedResult);
+  }
+
+  for (let i = 0; i < 256; i++) {
+    const cell = new Cell(manager, 10, 10);
+    cell.setState(false);
+    const expectedResult = expectedResultsForDeadCell[i];
+    const nextState = cell.getNextState();
+    expect(nextState).toEqual(expectedResult);
+  }
+
 });
