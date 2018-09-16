@@ -1,7 +1,6 @@
 
 class CellManager {
 
-
   constructor(width, height) {
     let cells = [];
     for (let i = 0; i < width; i++) {
