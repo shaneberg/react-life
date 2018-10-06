@@ -21,6 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "coverage": "react-scripts test --env=jsdom --coverage",
+    "cov": "npm run coverage",
     "eject": "react-scripts eject",
     "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom",
     "lint": "node node_modules/eslint/bin/eslint.js src/"
