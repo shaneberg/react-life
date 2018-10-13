@@ -1,7 +1,7 @@
 // A look-less model of a Conway's Life cell
 
 class Cell {
-  
+
   constructor(manager, x, y) {
     // Can constructors throw/fail?
     this.manager = manager;
@@ -33,6 +33,14 @@ class Cell {
     const neighborStates = this.manager.getNeighborStates(this.pos.x, this.pos.y);
     const neighborCount = Cell.countValues(neighborStates, true);
     return Cell.determineNextState(this.alive, neighborCount);
+  }
+
+  updateNextState() {
+    this.nextState = this.getNextState();
+  }
+
+  applyNextState() {
+    this.alive = this.nextState();
   }
 
   /*

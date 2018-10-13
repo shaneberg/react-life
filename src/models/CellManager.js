@@ -18,6 +18,23 @@ class CellManager {
     this.cells = cells;
   }
 
+  updateCells() {
+    this.prepareCells();
+    this.transitionCells();
+  }
+
+  prepareCells() {
+    for (let i = 0; i < this.cells.length; i++) {
+      this.cells[i].updateNextState();
+    }
+  }
+
+  transitioncells() {
+    for (let i = 0; i < this.cells.length; i++) {
+      this.cells[i].applyNextState();
+    }
+  }
+
   /*
    *  Array indicies of X's neighbors
    *  +---+---+---+
@@ -46,7 +63,7 @@ class CellManager {
     const downInBound = (down < this.cells[x].length);
 
     return [
-      // row above 
+      // row above
       leftInBound && upInBound ? this.cells[left][up] : false,
       upInBound ? this.cells[x][up] : false,
       rightInBound && upInBound ? this.cells[right][up] : false,
@@ -54,7 +71,7 @@ class CellManager {
       // main row
       leftInBound ? this.cells[left][y] : false,
       rightInBound ? this.cells[right][y] : false,
-      
+
       // row below
       leftInBound && downInBound ? this.cells[left][down] : false,
       downInBound ? this.cells[x][down] : false,
