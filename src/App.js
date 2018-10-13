@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   render() {
-    // const cells = this.cellManager.getCells();
+    const cells = this.cellManager.getCells();
 
     return (
       <div className="App">
