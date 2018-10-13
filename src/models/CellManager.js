@@ -35,6 +35,10 @@ class CellManager {
     }
   }
 
+  getCells() {
+    return this.cells;
+  }
+
   /*
    *  Array indicies of X's neighbors
    *  +---+---+---+

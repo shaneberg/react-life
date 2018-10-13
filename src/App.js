@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import GameEngine from './models/GameEngine';
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.gameEngine = new GameEngine(10, 15);
+    this.cellManager = this.gameEngine.getCellManager();
+  }
+
   render() {
+    // const cells = this.cellManager.getCells();
+
     return (
       <div className="App">
         <header className="App-header">
@@ -11,7 +21,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          {cells}
         </p>
       </div>
     );

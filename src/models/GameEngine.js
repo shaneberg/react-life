@@ -2,9 +2,7 @@ import CellManager from "./CellManager";
 
 class GameEngine {
 
-  constructor() {
-    const height = 10;
-    const width = 15;
+  constructor(width, height) {
     this.cellManager = new CellManager(width, height);
   }
 
@@ -12,6 +10,10 @@ class GameEngine {
   update() {
     // for each cell, set its next state
     this.cellManager.updateCells();
+  }
+
+  getCellManager() {
+    return this.cellManager;
   }
 
 }
