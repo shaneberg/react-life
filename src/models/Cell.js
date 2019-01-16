@@ -40,7 +40,7 @@ class Cell {
   }
 
   applyNextState() {
-    this.alive = this.nextState();
+    this.alive = this.nextState;
   }
 
   /*

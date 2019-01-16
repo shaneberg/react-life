@@ -1,3 +1,4 @@
+import Cell from "./Cell";
 
 class CellManager {
 
@@ -9,8 +10,10 @@ class CellManager {
 
         // Is this new one alive?
         let rand = Math.random();
-        const odds = 0.3;
-        curCol[j] = (rand <= odds);
+        const odds = 0.6;
+        curCol[j] = new Cell(this, i, j);
+        const alive = (rand <= odds);
+        curCol[j].setState(alive);
       }
       cells[i] = curCol;
     }
@@ -25,13 +28,17 @@ class CellManager {
 
   prepareCells() {
     for (let i = 0; i < this.cells.length; i++) {
-      this.cells[i].updateNextState();
+      for (let j = 0; j < this.cells[i].length; j++) {
+        this.cells[i][j].updateNextState();
+      }
     }
   }
 
-  transitioncells() {
+  transitionCells() {
     for (let i = 0; i < this.cells.length; i++) {
-      this.cells[i].applyNextState();
+      for (let j = 0; j < this.cells[i].length; j++) {
+        this.cells[i][j].applyNextState();
+      }
     }
   }
 
@@ -68,18 +75,18 @@ class CellManager {
 
     return [
       // row above
-      leftInBound && upInBound ? this.cells[left][up] : false,
-      upInBound ? this.cells[x][up] : false,
-      rightInBound && upInBound ? this.cells[right][up] : false,
+      leftInBound && upInBound ? this.cells[left][up].alive : false,
+      upInBound ? this.cells[x][up].alive : false,
+      rightInBound && upInBound ? this.cells[right][up].alive : false,
 
       // main row
-      leftInBound ? this.cells[left][y] : false,
-      rightInBound ? this.cells[right][y] : false,
+      leftInBound ? this.cells[left][y].alive : false,
+      rightInBound ? this.cells[right][y].alive : false,
 
       // row below
-      leftInBound && downInBound ? this.cells[left][down] : false,
-      downInBound ? this.cells[x][down] : false,
-      rightInBound && downInBound ? this.cells[right][down] : false,
+      leftInBound && downInBound ? this.cells[left][down].alive : false,
+      downInBound ? this.cells[x][down].alive : false,
+      rightInBound && downInBound ? this.cells[right][down].alive : false,
     ];
   }
 }

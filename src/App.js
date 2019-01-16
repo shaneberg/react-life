@@ -7,12 +7,36 @@ class App extends Component {
 
   constructor() {
     super();
-    this.gameEngine = new GameEngine(10, 15);
+    this.gameEngine = new GameEngine(10, 20);
     this.cellManager = this.gameEngine.getCellManager();
+
+    setTimeout(this.update.bind(this), 1000);
+  }
+
+  // game loop update
+  update() {
+    this.gameEngine.update()
+    this.forceUpdate();
+    setTimeout(this.update.bind(this), 1000);
+  }
+
+  renderTableForCells(cells) {
+    let key = 0;
+    const renderedCells = cells.map((cellRow) => {
+      const renderedRow = cellRow.map((cell) => {
+        return cell.alive ? '*' : '-';
+      });
+      key++;
+      return <p key={key}>{renderedRow}</p>;
+    });
+    return (
+      <tt>{renderedCells}</tt>
+    );
   }
 
   render() {
     const cells = this.cellManager.getCells();
+    const cellRendering = this.renderTableForCells(cells);
 
     return (
       <div className="App">
@@ -21,8 +45,8 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          {cells}
         </p>
+          {cellRendering}
       </div>
     );
   }
