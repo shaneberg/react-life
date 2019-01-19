@@ -8,16 +8,17 @@ class App extends Component {
   constructor() {
     super();
     this.gameEngine = new GameEngine(10, 20);
-    this.cellManager = this.gameEngine.getCellManager();
 
-    setTimeout(this.update.bind(this), 1000);
+    this.gameEngine.registerListener(this.onChange.bind(this));
+    this.gameEngine.setUpdateInterval(1000); // 1 second
+    this.gameEngine.start();
+
+    this.cellManager = this.gameEngine.getCellManager();
   }
 
   // game loop update
-  update() {
-    this.gameEngine.update()
+  onChange() {
     this.forceUpdate();
-    setTimeout(this.update.bind(this), 1000);
   }
 
   renderTableForCells(cells) {
