@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import './App.css';
 
-class SVGAtomicLifeCell extends Component {
+class SVGAtomicLifeCellCircle extends Component {
   render() {
     let fill = this.props.alive ? "black" : "red";
     return (
@@ -10,4 +10,4 @@ class SVGAtomicLifeCell extends Component {
   }
 }
 
-export default SVGAtomicLifeCell;
+export default SVGAtomicLifeCellCircle;

@@ -10,10 +10,10 @@ class App extends Component {
 
   constructor() {
     super();
-    this.gameEngine = new GameEngine(20, 20);
+    this.gameEngine = new GameEngine(50, 50);
 
     this.gameEngine.registerListener(this.onChange.bind(this));
-    this.gameEngine.setUpdateInterval(250); // 1 second
+    this.gameEngine.setUpdateInterval(2000); // 1 second
     this.gameEngine.start();
 
     this.cellManager = this.gameEngine.getCellManager();
@@ -28,7 +28,7 @@ class App extends Component {
   renderTableForCells(cells) {
     const width = this.gameEngine.getWidth();
     const height = this.gameEngine.getHeight();
-    const cellRadius = 10;
+    const cellRadius = 4;
     return (<SVGReactLifeBoard
       width={width}
       height={height}

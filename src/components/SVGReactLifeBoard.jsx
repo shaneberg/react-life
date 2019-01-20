@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SVGAtomicLifeCell from './SVGAtomicLifeCell';
+import SVGAtomicLifeCellRect from './SVGAtomicLifeCellRect';
 // import './App.css';
 
 
@@ -21,14 +21,14 @@ class SVGReactLifeBoard extends Component {
 
   render() {
     const cellRadius = this.props.cellRadius;
-    const boardHeight = (this.props.height * cellRadius * 2);
-    const boardWidth = (this.props.width * cellRadius * 2);
+    const boardHeight = cellRadius + (this.props.height * cellRadius * 2);
+    const boardWidth = cellRadius + (this.props.width * cellRadius * 2);
     const svgCells = this.props.cells.map((cellRow) => {
       return cellRow.map((cell) => {
         const xPos = cellRadius + (cell.pos.x * cellRadius * 2);
         const yPos = cellRadius + (cell.pos.y * cellRadius * 2);
         return (
-          <SVGAtomicLifeCell
+          <SVGAtomicLifeCellRect
             cellRadius={this.props.cellRadius}
             key={xPos + yPos + ""}
             alive={cell.alive}
