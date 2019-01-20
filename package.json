@@ -6,7 +6,8 @@
     "babel-eslint": "^9.0.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "react-dom": "^16.4.0",
+    "react-transition-group": "^2.5.3"
   },
   "devDependencies": {
     "eslint-config-react-app": "^2.1.0",
