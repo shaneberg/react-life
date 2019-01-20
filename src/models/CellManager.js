@@ -19,6 +19,8 @@ class CellManager {
     }
 
     this.cells = cells;
+    this.width = width;
+    this.height = height;
   }
 
   updateCells() {
@@ -44,6 +46,14 @@ class CellManager {
 
   getCells() {
     return this.cells;
+  }
+
+  getWidth() {
+    return this.width;
+  }
+
+  getHeight() {
+    return this.height;
   }
 
   /*

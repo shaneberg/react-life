@@ -34,6 +34,14 @@ class GameEngine {
     }
   }
 
+  getWidth() {
+    return this.cellManager.getWidth();
+  }
+
+  getHeight() {
+    return this.cellManager.getHeight();
+  }
+
   setUpdateInterval(milliseconds) {
     this.updateInterval = milliseconds;
   }
