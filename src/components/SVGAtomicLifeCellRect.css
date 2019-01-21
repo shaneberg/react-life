@@ -1,0 +1,14 @@
+.fade-enter {
+  fill-opacity: 0.01;
+}
+.fade-enter-active {
+  fill-opacity: 1;
+  transition: fill-opacity 500ms ease-in;
+}
+.fade-exit {
+  fill-opacity: 1;
+}
+.fade-exit-active {
+  fill-opacity: 0.01;
+  transition: fill-opacity 500ms ease-in;
+}

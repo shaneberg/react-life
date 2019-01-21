@@ -27,15 +27,19 @@ class SVGReactLifeBoard extends Component {
       return cellRow.map((cell) => {
         const xPos = cellRadius + (cell.pos.x * cellRadius * 2);
         const yPos = cellRadius + (cell.pos.y * cellRadius * 2);
-        return (
-          <SVGAtomicLifeCellRect
-            cellRadius={this.props.cellRadius}
-            key={xPos + yPos + ""}
-            alive={cell.alive}
-            x={xPos}
-            y={yPos}
-          />
-        );
+        if (cell.alive) {
+          return (
+            <SVGAtomicLifeCellRect
+              cellRadius={this.props.cellRadius}
+              key={xPos + yPos + ""}
+              alive={cell.alive}
+              x={xPos}
+              y={yPos}
+            />
+          );
+        } else {
+          return(null);
+        }
       });
     });
     return (
