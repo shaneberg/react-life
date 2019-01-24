@@ -13,7 +13,7 @@ class App extends Component {
     this.gameEngine = new GameEngine(25, 25);
 
     this.gameEngine.registerListener(this.onChange.bind(this));
-    this.gameEngine.setUpdateInterval(2000); // 1 second
+    this.gameEngine.setUpdateInterval(1000); // 1 second
     this.gameEngine.start();
 
     this.cellManager = this.gameEngine.getCellManager();
