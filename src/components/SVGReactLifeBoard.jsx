@@ -1,22 +1,8 @@
 import React, { Component } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import SVGAtomicLifeCellRect from './SVGAtomicLifeCellRect';
-// import './App.css';
+import './SVGReactLifeBoard.css';
 
-
-
-// Cell width = circle width + padding
-// Cell height = circle height + padding
-// Container width = cell width * number of cells + padding
-// Container height = cell height * number of cells + padding
-
-// Property list
-// cellWidth
-// cellHeight
-// cellPadWidth
-// cellPadHeight
-// boardWidth (number of cells)
-// boardHeight (number of cells)
-// cell array?
 class SVGReactLifeBoard extends Component {
 
   render() {
@@ -27,21 +13,29 @@ class SVGReactLifeBoard extends Component {
       return cellRow.map((cell) => {
         const xPos = cellRadius + (cell.pos.x * cellRadius * 2);
         const yPos = cellRadius + (cell.pos.y * cellRadius * 2);
-        return (
-          <SVGAtomicLifeCellRect
-            cellRadius={this.props.cellRadius}
-            key={xPos + yPos + ""}
-            alive={cell.alive}
-            x={xPos}
-            y={yPos}
-          />
-        );
+        if (cell.alive) {
+          return (
+            <CSSTransition key={cell.pos.x + cell.pos.y + ""} classNames="fade" timeout={250} >
+              <SVGAtomicLifeCellRect
+                cellRadius={this.props.cellRadius}
+                key={xPos + yPos + ""}
+                alive={cell.alive}
+                x={xPos}
+                y={yPos}
+              />
+            </CSSTransition>
+          );
+        } else {
+          return (null);
+        }
       });
     });
     return (
       <div>
         <svg height={boardHeight} width={boardWidth}>
-          {svgCells}
+          <TransitionGroup component='g'>
+            {svgCells}
+          </TransitionGroup>
         </svg>
       </div>
     );
